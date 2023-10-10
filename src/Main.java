@@ -10,6 +10,8 @@ public class Main {
         randomize(matr);
         printMatr(matr);
         printLineSums(matr);
+        int max = findMax(matr);
+        System.out.println("Максимальный элемент матрицы: " + max);
     }
 
     private static int[][] createMatrixOfZeroes() {
@@ -21,8 +23,7 @@ public class Main {
         return matr;
     }
 
-    public static void printMatr(int[][] matr)
-    {
+    public static void printMatr(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 System.out.printf(" %3d", matr[i][j]);
@@ -31,26 +32,38 @@ public class Main {
         }
     }
 
-    public static void randomize(int[][] matr)
-    {
+    public static void randomize(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 Random rn = new Random();
-                int randomNum = rn.nextInt(100) ;
+                int randomNum = rn.nextInt(100);
                 matr[i][j] = randomNum;
             }
         }
     }
 
     //подсчитать и вывести сумму элементов в каждой строке матрицы
-    public static void printLineSums(int[][] matr)
-    {
+    public static void printLineSums(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             int s = 0;
             for (int j = 0; j < matr[i].length; j++) {
                 s += matr[i][j];
             }
-            System.out.println("сумма элементов строки "+i+" равна "+s);
+            System.out.println("сумма элементов строки " + i + " равна " + s);
         }
     }
+
+    public static int findMax(int[][] matr) {
+        int max = matr [0][0];
+        for (int i = 0; i < matr.length; i++) {
+
+            for (int j = 0; j < matr[i].length; j++) {
+                if (matr [i][j] > max)
+                    max = matr [i][j];
+
+            }
+        }
+        return max;}
+
 }
+
